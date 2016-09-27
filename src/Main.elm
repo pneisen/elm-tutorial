@@ -1,15 +1,16 @@
 module Main exposing (..)
 
-import Messages exposing (Msg)
+import Messages exposing (Msg(..))
 import Models exposing (Model, initialModel)
 import Update exposing (update)
 import View exposing (view)
+import Players.Commands exposing (fetchAll)
 import Html.App
 
 
 init : ( Model, Cmd Msg )
 init =
-    ( initialModel, Cmd.none )
+    ( initialModel, Cmd.map PlayersMsg fetchAll )
 
 
 subscriptions : Model -> Sub Msg
